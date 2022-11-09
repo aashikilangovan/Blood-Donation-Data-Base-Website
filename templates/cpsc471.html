@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            crossorigin="anonymous"
+    />
+
+    <title>{% block title %}Home{% endblock %}</title>
+
+
+</head>
+<body>
+<style>
+    body{
+    background-image: linear-gradient(red, #ff7557);
+    width: 100%
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+
+    h5{
+    color:white
+    }
+
+
+    a:link {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+
+            <!-- {% if (user.email == 'info@kidscollect.ca')%} -->
+            <a class="nav-item nav-link" id="admin_logout" href="/logout">Logout</a>
+            <a class ="nav-item nav-link" id="admin_profile" href="/admin-profile">My Profile</a>
+<!--            <a class ="nav-item nav-link" id="requests" href="/requests">Requests</a>-->
+            <a class ="nav-item nav-link" id="updates_admin" href="/updates">Blog</a>
+
+            {% elif user.is_authenticated and user.confirmed %}
+            <a class="nav-item nav-link" id="home" href="/pickup">Pickup</a>
+            <a class ="nav-item nav-link" id="about_us" href="/about-us">About us</a>
+<!--            <a class ="nav-item nav-link" id="dashboard" href="/dashboard">Dashboard</a>-->
+            <a class ="nav-item nav-link" id="profile" href="/profile">My Profile</a>
+            <a class ="nav-item nav-link" id="faq" href="/faqs">FAQ's</a>
+            <a class ="nav-item nav-link" id="updates" href="/updates">Blog</a>
+            <a class ="nav-item nav-link" id="learning_tools" href="/learning_tools">Learning tools</a>
+            <a class="nav-item nav-link" id="logout" href="/logout" style="color: purple">Logout</a>
+
+
+            {% elif user.is_authenticated %}
+            <a class ="nav-item nav-link" id="unconfirmed" href="/unconfirmed">Home</a>
+            <a class="nav-item nav-link" id="logout_unconfirmed" href="/logout">Logout</a>
+            <a class ="nav-item nav-link" id="about_us_unconfirmed" href="/about-us">About us</a>
+            <a class ="nav-item nav-link" id="learning_tools2" href="/learning_tools">Learning tools</a>
+
+            {% else%}
+            <a class ="nav-item nav-link" id="homepage" href="/">Home</a>
+<!--            <a class="nav-item nav-link" id="login" href="/login">Login</a>-->
+            <a class ="nav-item nav-link" id="about_us_2" href="/about-us">About us</a>
+            <a class ="nav-item nav-link" id="learning_tools3" href="/learning_tools">Learning tools</a>
+            <a class ="nav-item nav-link" id="updates2" href="/updates">Blog</a>
+
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if
+messages %} {% for category, message in messages %} {% if category ==
+'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% else %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+
+{% endif %} {% endfor %} {% endif %} {% endwith %}
+<div class = "center">
+
+<svg id="eE1k60SAPtI1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-550 30 1700 900" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(2.235848 0 0 1.720866-215.31877-353.976823)"><g transform="matrix(.045056 0.000472 0.000373-.035685 14.335149 390.509496)"><path style="isolation:isolate" d="M1860,4469c-102-11-249-45-343-80-392-142-617-453-555-767c111-565,983-921,1726-706c385,112,642,388,642,690c0,254-167,494-465,668-268,156-663,233-1005,195Zm465-173c212-38,429-127,574-236c90-69,137-118,192-203c235-364-78-755-668-832-135-18-219-19-351-4-296,32-563,137-747,294-151,130-236,321-208,472c49,263,351,473,751,522c105,13,348,6,457-13Z" fill="#fff"/><path style="isolation:isolate" d="M1506,3858c-35-134,71-288,264-381c334-161,795-125,975,76c49,54,82,139,70,184l-6,26-18-29c-143-234-648-294-1008-119-112,55-201,133-239,211-14,30-28,54-29,54s-5-10-9-22Z" fill="#fff"/><path d="M4120,3249c-225-16-445-79-675-194-332-166-576-397-710-670-165-334-114-653,137-862c70-58,232-137,336-163c329-83,722-27,1089,155c287,142,498,319,649,546c181,272,221,539,114,768-139,296-486,451-940,420Zm251-164c177-13,337-81,445-189c112-112,152-219,141-376-30-436-554-889-1171-1012-165-33-393-30-529,5-299,79-457,253-457,506c0,102,18,179,65,279c54,115,122,208,225,312c216,215,526,382,836,450c101,22,271,39,334,34c19-2,69-6,111-9Z" fill="#fff"/><path d="M4516,2682c-30-265-344-500-730-567-180-32-409-69-513,0-29,20-53,31-53,25c0-26,34-88,68-123c223-231,825-103,1145,243c141,153,185,325,113,444l-23,39-7-61Z" fill="#fff"/><path style="isolation:isolate" d="M616,2864c-176-35-300-98-412-209C80,2532,17,2392,4,2210C-35,1684,449,1059,1114,776c224-96,394-131,626-130c145,1,177,4,264,27c229,61,485,372,485,372c44,91,62,164,68,277c37,660-697,1413-1506,1544-107,17-344,17-435-2Zm499-172c619-158,1153-642,1269-1149c18-83,21-228,5-305-30-142-145-288-279-355C1510,584,450,1148,207,1895c-88,268-52,480,108,641c89,90,192,144,336,174c78,16,373,5,464-18Z" fill="#fff"/><path style="isolation:isolate" d="M702,2348c-43-64-54-100-54-175-3-390,560-864,1025-863c144,0,249,43,314,128c49,65,44,76-21,46-188-86-515-16-783,168-112,76-255,218-322,319-82,121-116,220-116,331c0,49-3,88-7,88s-20-19-36-42Z" fill="#fff"/></g><text dx="0" dy="0" font-family="&quot;eE1k60SAPtI1:::Concert One&quot;" font-size="70" font-weight="400" letter-spacing="10" transform="matrix(.595798 0.00829-.013735 0.987112 33.610636 434.38249)" fill="#fffefe" stroke-width="0"><tspan y="0" font-weight="400" stroke-width="0"><![CDATA[The Erythro-Site]]></tspan></text></g><style><![CDATA[@font-face {font-family: 'eE1k60SAPtI1:::Concert One';font-style: normal;font-weight: 400;src: url(data:font/ttf;charset=utf-8;base64,AAEAAAAOAIAAAwBgT1MvMpX/j74AAAIIAAAAYGNtYXACPgJXAAACaAAAAHxjdnQgAD8H1AAAAQgAAAASZnBnbZJB2voAAALkAAABYWdhc3AAAAAQAAAA7AAAAAhnbHlmNZEu5AAABrAAAAtUaGVhZPx+KI4AAAHQAAAANmhoZWEOGQg6AAABeAAAACRobXR4MBIE2gAAAZwAAAA0bG9jYQ/xE0oAAAEcAAAAHG1heHACIAMmAAABOAAAACBuYW1lL+JOFgAABEgAAAJocG9zdP9tAGQAAAFYAAAAIHByZXAXLpg/AAAA9AAAABEAAQAB//8AD7AAKwCyAQQHK7AAIEV9aRhEAAAAACoAAAAI/nAAAAPsAAQFeAAIAAAAAABPAE8AegDaAcECCwLCAz0DsgRWBKIFKgWqAAEAAAANAIwABQA/AAIAAQAAAAAACgAAAgACWQABAAEAAwAAAAAAAP9qAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAH1QGaAAAGuP/I/9oGegABAAAAAAAAAAAAAAAAAAAADQUYAO4DHgAAA8YAbAPaAIwD9gBYA9YACgP8AFwEEgB6AnIAmgPeAE4DGACEA2YAPAOUABQAAQAAAAEAABzKHGhfDzz1AB0IAAAAAADLYfyZAAAAAMuo4OL/yP5wBnoHpgAAAAgAAgAAAAAAAAADA/UBkAAFAAAFmgUzAAABHwWaBTMAAAPRAGYCAAAAAAAAAAAAAAAAAIAAACcAAABDAAAAAAAAAABweXJzAEAAICIVB9UBmgAAB9UBmiAAARFAAAAAA+wFeAAAACAAAQAAAAIAAAADAAAAFAADAAEAAAAUAAQAaAAAABYAEAADAAYAIAAtAEUAVABlAGkAbwByAHQAef//AAAAIAAtAEUAUwBlAGgAbwByAHQAef///+H/1f++/7H/of+f/5r/mP+X/5MAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACwACxLsAlQWLEBAY5ZuAH/hbBEHbEJA19eLbABLCAgRWlEsAFgLbACLLABKiEtsAMsIEawAyVGUlgjWSCKIIpJZIogRiBoYWSwBCVGIGhhZFJYI2WKWS8gsABTWGkgsABUWCGwQFkbaSCwAFRYIbBAZVlZOi2wBCwgRrAEJUZSWCOKWSBGIGphZLAEJUYgamFkUlgjilkv/S2wBSxLILADJlBYUViwgEQbsEBEWRshISBFsMBQWLDARBshWVktsAYsICBFaUSwAWAgIEV9aRhEsAFgLbAHLLAGKi2wCCxLILADJlNYsEAbsABZioogsAMmU1gjIbCAioobiiNZILADJlNYIyGwwIqKG4ojWSCwAyZTWCMhuAEAioobiiNZILADJlNYIyG4AUCKihuKI1kgsAMmU1iwAyVFuAGAUFgjIbgBgCMhG7ADJUUjISMhWRshWUQtsAksS1NYRUQbISFZLQAAAAAAAAgAZgADAAEECQAAAUAAwgADAAEECQABABYArAADAAEECQACAA4AngADAAEECQADACwAcgADAAEECQAEABYArAADAAEECQAFABoAWAADAAEECQAGACQANAADAAEECQAOADQAAABoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAQwBvAG4AYwBlAHIAdABPAG4AZQAtAFIAZQBnAHUAbABhAHIAVgBlAHIAcwBpAG8AbgAgADEALgAwADAAMwAxAC4AMAAwADMAOwBwAHkAcgBzADsAQwBvAG4AYwBlAHIAdAAgAE8AbgBlAFIAZQBnAHUAbABhAHIAQwBvAG4AYwBlAHIAdAAgAE8AbgBlAEMAbwBwAHkAcgBpAGcAaAB0ACAAKABjACkAIAAyADAAMQAxACwAIAAyADAAMQAxACAASgBvAGgAYQBuACAASwBhAGwAbABhAHMAIAAoAGoAbwBoAGEAbgBrAGEAbABsAGEAcwBAAGcAbQBhAGkAbAAuAGMAbwBtACkALAAgAEMAbwBwAHkAcgBpAGcAaAB0ACAAKABjACkAIAAyADAAMQAxACwAIAAyADAAMQAxACAATQBpAGgAawBlAGwAIABWAGkAcgBrAHUAcwAgACgAbQBpAGgAawBlAGwAdgBpAHIAawB1AHMAQABnAG0AYQBpAGwALgBjAG8AbQApACwAIAB3AGkAdABoACAAUgBlAHMAZQByAHYAZQBkACAARgBvAG4AdAAgAE4AYQBtAGUAIABDAG8AbgBjAGUAcgB0AC4AAgDuAAAEKgV4ABcAGwBEsBwvsBovsADcsBwQsAvQsAsvsBncsAAQsB3cALAARViwES8bsREHPlmwAEVYsAUvG7EFAT5ZsBEQsBjcsAUQsBncMDElFA4C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) format('truetype');}]]></style></svg>
+</div>
+<div class="container">{% block content %} {% endblock %}</div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+></script>
+
+<script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+></script>
+
+
+</body>
+</html>

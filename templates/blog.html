@@ -1,0 +1,104 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 0%;
+  padding-left: 20px;
+}
+
+
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+ 
+
+<div class="row">
+  <div class="leftcolumn">
+    {% if (admin == '1' )%}
+    <div class="card" >
+    <form method = "POST">
+      <label for="title"><b><pre>Title</pre></b></label><br>
+      <input type="text" id="title" name="title" style="width:100%">
+      <br><br>
+      <label for="body"><b><pre>Body</pre></b></label><br>
+      <textarea id="blog_post" name="blog_post"  rows="4" cols="60" style="width:100%"></textarea>
+      <br><br>
+     <center> <input class="btn btn-primary" type="submit" value="Submit"></center>
+    </form>
+  </div>
+    {%endif%}
+
+  
+    <!--for(number of blog posts, display)-->
+  {% for i in range(0, size) %}
+  <div class="card">
+   
+      <h2>{{titles[size-i -1]}}</h2>
+      <p>{{dates[size-i -1]}}</p>
+      <p> {{bodies[size-i -1]}}</p>
+     
+    </div>
+ {% endfor %}
+  </div>
+  
+  
+  
+   
+  </div>
+
+
+</body>
+</html>
+
+{% endblock %}

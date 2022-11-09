@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <html>
+      <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <style>
+      
+         
+        
+         
+        </style>
+      </head>
+      <body>
+        <div >
+          <br>
+          {% for i in range(0, size) %}
+  <div class="card">
+      <br>
+   <center>
+      <p><b> {{subjects[size-i -1]}}</b><br>_____________________________________________</p>
+      
+      <p>{{messages[size-i -1]}}</p>
+    </center>
+    <br>
+    </div>
+    <br>
+ {% endfor %}
+    
+  
+     
+      </body>
+    </html>
+    
+    {% endblock %}

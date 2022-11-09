@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
+  <html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      <style>
+    
+       
+      
+       
+      </style>
+    </head>
+    <body>
+      <div >
+        <br>
+  <div class = "card">
+            <br><legend><center>Appointment Options</center></legend><br>
+          
+          <br>
+            {% for i in range(0, size) %}
+  <div class="card">
+      
+      <pre><b><br>  Date:</b> {{trimmedDates[i]}} <br>  <b>Time:</b> {{trimmedTimes[i]}}<br> <b> Location:</b> {{trimmedAddresses[i]}}, {{trimmedLocations[i]}}, {{trimmedCities[i]}}, {{trimmedCountries[i]}}</pre>
+      <form method = "POST">
+      <center><button  id = "{{ID[i]}}" class="btn btn-primary" type="submit" name = "submit_button" value="{{ID[i]}}"  style = "width:100px;  background-color: #aec1e8;">Select</button></center>
+        <pre></pre>
+      </form>
+      
+    </div>
+   
+ {% endfor %}
+  </div>
+
+   
+    </body>
+  </html>
+  
+  {% endblock %}

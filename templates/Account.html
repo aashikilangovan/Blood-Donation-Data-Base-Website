@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+
+
+    <html lang="en">
+        <head>
+          <title>Bootstrap Example</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        </head>
+        
+        <body>
+        
+        <div class="container">
+       
+          <div class="card" style="width:400px">
+            {% if (gender == 'female') %}
+            <img class="card-img-top" src="/static/female.jpg" alt="Card image" style="width:100%">
+            {%else%}
+            <img class="card-img-top" src="/static/male.jpg" alt="Card image" style="width:100%">
+            {%endif%}
+            <div class="card-body">
+                <center>
+              <h4 class="card-title">{{name}} {{lastname}}</h4>
+            </center>
+                <p><br><b>Username:</b> {{username}}</p>
+                <p><b>Birthday:</b> {{birthday}}</p>
+                <p><b>Gender:</b> {{gender}}</p> 
+                <p><b>Age:</b> {{age}}</p> 
+                <p><b>Blood Type: </b>{{group}} {{rhesus}}</p>
+                             <a href="/edit-profile/{{admin}}/{{username}}" class="btn btn-primary">Edit Profile</a>
+            </div>
+          </div>
+          <br>
+          
+         
+        </div>
+    
+        </body>
+        </html>
+    
+    {% endblock %}
